@@ -1,70 +1,75 @@
-@import url("https://use.typekit.net/lro3nyk.css");
+@import url("https://use.typekit.net/rys5prl.css");
 
 /*
-Proxima Nova Bold
+Open Sans Bold
 
-font-family: proxima-nova, sans-serif;
+font-family: open-sans, sans-serif;
 font-weight: 700;
 font-style: normal;
 
-Proxima Nova Bold Italic
 
-font-family: proxima-nova, sans-serif;
+Open Sans Bold Italic
+
+font-family: open-sans, sans-serif;
 font-weight: 700;
 font-style: italic;
 
-Proxima Nova Regular
 
-font-family: proxima-nova, sans-serif;
-font-weight: 400;
-font-style: normal;
+Open Sans Italic
 
-Proxima Nova Italic
-
-font-family: proxima-nova, sans-serif;
+font-family: open-sans, sans-serif;
 font-weight: 400;
 font-style: italic;
 
 
-Skolar Sans Latin Regular
+Open Sans Regular
 
-font-family: skolar-sans-latin, sans-serif;
+font-family: open-sans, sans-serif;
 font-weight: 400;
 font-style: normal;
 
-Skolar Sans Latin Bold Italic
+Export
 
-font-family: skolar-sans-latin, sans-serif;
-font-weight: 700;
+font-family: export,sans-serif;
+font-weight: 400;
+font-style: normal;
+
+Le Monde Journal Std Regular
+
+font-family: lemonde-journal, serif;
+font-weight: 400;
+font-style: normal;
+
+
+Le Monde Journal Std Italic
+
+font-family: lemonde-journal, serif;
+font-weight: 400;
 font-style: italic;
 
-Skolar Sans Latin Bold
 
-font-family: skolar-sans-latin, sans-serif;
+Le Monde Journal Std Bold
+
+font-family: lemonde-journal, serif;
 font-weight: 700;
 font-style: normal;
 
-Skolar Sans Latin Italic
 
-font-family: skolar-sans-latin, sans-serif;
-font-weight: 400;
+Le Monde Journal Std Bold Italic
+
+font-family: lemonde-journal, serif;
+font-weight: 700;
 font-style: italic;
 */
 
 :root {
     /*Fonts*/
-    --proxima: proxima-nova, sans-serif;
-    --skolar: skolar-sans-latin, sans-serif;
+    --export: export, sans-serif;
     /*Fonts*/
 
     /*Colors*/
     --black-main: #333333;
-    --blue-main: #334060;
-    --red-main: #e54e56;
-    --red-second: #e3b9ad;
-    --red-tertiary: #f7c9cc;
-    --yellow-main: #fce371;
-    --yellow-second: #fef7e5;
+    --red-main: #f72732;
     /*Colors*/
 }
 
@@ -74,10 +79,103 @@ body {
     color: var(--black-main);
 }
 
+.main-container {
+    background-color: #000;
+}
+
+.row {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+header {
+    .mcci-text {
+        font: normal normal normal 0.813rem/1.3rem Export !important;
+        letter-spacing: 0.13px;
+        text-transform: uppercase;
+        color: #fff;
+    }
+}
+
 #sidebar-container {
-    min-height: 100vh;
-    background-color: #333;
+    height: 100vh;
+    background-color: #000;
     padding: 0;
+    z-index: 10024;
+    transition: all 0.5s ease-in-out;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+
+    /*Scrollbar*/
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+        background-color: #000;
+        border-radius: 0px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        background-color: var(--red-main);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 0px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: var(--red-main);
+    }
+
+    /*Scrollbar*/
+
+    .menu-title {
+        text-align: left;
+        font: normal normal normal 1.75rem/2.125rem Export;
+        letter-spacing: 0px;
+        color: var(--red-main);
+        text-transform: uppercase;
+    }
+
+    .items-h {
+        .list-group-item {
+            font: normal normal normal 1.375rem/2.125rem Export;
+            text-transform: uppercase;
+            padding-left: 0 !important;
+            padding-top: 35px;
+            padding-bottom: 35px;
+
+            &::before {
+                position: absolute;
+                content: "\0000B7"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+                color: var(--red-main); /* Change the color */
+                font-weight: bold; /* If you want it to be bold */
+                display: inline-block; /* Needed to add space between the bullet and the text */
+                width: 2px; /* Also needed for space (tweak if needed) */
+                margin-left: -0.4em; /* Also needed for space (tweak if needed) */
+            }
+
+            &:last-child::before {
+                content: none;
+            }
+
+            div {
+                padding-left: 10px;
+            }
+
+            .socials {
+                i {
+                    font: normal normal normal 1.25rem/2.5rem;
+                    color: var(--red-main);
+                }
+            }
+        }
+    }
+}
+
+.list-group-item {
+    background-color: transparent !important;
 }
 
 /* Sidebar sizes when expanded and expanded */
@@ -85,12 +183,19 @@ body {
     width: 230px;
 }
 .sidebar-collapsed {
-    width: 60px;
+    width: 5px;
+
+    .list-group-item {
+        background-color: transparent !important;
+        padding: 0;
+        border: none;
+    }
 }
 
 /* Menu item*/
 #sidebar-container .list-group a {
     height: 50px;
+    background-color: transparent;
     color: white;
 }
 
@@ -104,16 +209,12 @@ body {
 }
 
 /* Separators */
-.sidebar-separator-title {
-    background-color: #333;
-    height: 35px;
-}
 .sidebar-separator {
-    background-color: #333;
-    height: 25px;
+    background-color: #000;
+    height: 1.56rem;
 }
 .logo-separator {
-    background-color: #333;
+    background-color: #000;
     height: 60px;
 }
 
@@ -132,4 +233,207 @@ body {
     display: inline;
     text-align: right;
     padding-left: 10px;
+}
+
+.close-sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    transition: all 0.5s ease-in-out;
+    z-index: 10024;
+
+    #collapse-icon {
+        color: var(--red-main);
+    }
+
+    &.nav-open {
+        left: 230px;
+    }
+}
+
+.main-container {
+    transition: all 0.5s ease-in-out;
+    &.nav-open {
+        padding-left: 230px;
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+#histories-container {
+    transition: all 0.5s ease-in-out;
+    &.nav-open {
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+#fullpage {
+    .section {
+        background-size: cover;
+        background-position: center center;
+        transition: width 0.5s ease-in-out;
+
+        &-1 {
+            background-image: url("https://mdbcdn.b-cdn.net/img/new/standard/city/043.jpg");
+        }
+
+        &-2 {
+            background-image: url("https://mdbcdn.b-cdn.net/img/new/standard/city/044.jpg");
+        }
+
+        &-3 {
+            background-image: url("https://mdbcdn.b-cdn.net/img/new/standard/city/045.jpg");
+        }
+
+        &-4 {
+            background-image: url("https://mdbcdn.b-cdn.net/img/new/standard/city/046.jpg");
+        }
+
+        &-5 {
+            background-image: url("https://mdbcdn.b-cdn.net/img/new/standard/city/047.jpg");
+        }
+
+        .row.item-container {
+            //filter: brightness(100%);
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+    }
+}
+
+.thematic-text {
+    font: normal normal normal 1.75rem/2.125rem Export;
+    color: var(--red-main);
+    margin-bottom: 0;
+}
+
+.title-text {
+    font: normal normal bold 4.188rem/4rem Le Monde Journal Std;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    word-break: break-word;
+}
+
+.sumary-text {
+    font: normal normal normal 1.25rem/1.625rem Open Sans;
+    color: #fff;
+}
+
+.entry-credits {
+    font: normal normal bold 1rem/1.625rem Open Sans;
+    color: #fff;
+    margin-bottom: 0;
+    text-align: center;
+    text-transform: uppercase;
+    span {
+        color: var(--red-main);
+    }
+}
+
+.share {
+    i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45px;
+        height: 45px;
+        background-color: var(--red-main);
+        color: #000;
+        border-radius: 50%;
+    }
+}
+
+.entry-container {
+    background-color: #fff;
+    font: normal normal normal 1.125rem/1.5rem Open Sans;
+
+    .col-12.px-0 {
+        .figure-caption {
+            text-transform: uppercase;
+            margin: 10px 10px;
+        }
+    }
+
+    .figure-caption {
+        font: normal normal bold 0.75rem/1.625rem Open Sans;
+        letter-spacing: 0px;
+        color: #747474;
+        text-transform: uppercase;
+        margin: 10px 0;
+    }
+}
+
+#histories-container {
+    min-height: 100vh;
+    position: relative;
+
+    .history-item {
+        width: 100%;
+        min-height: 100vh;
+        position: absolute;
+        background: url("../assets/images/camas/bg.jpg") center center;
+        background-size: cover;
+
+        .history-img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 70% auto !important;
+            background-position: center top !important;
+            background-repeat: no-repeat !important;
+        }
+
+        $h_images: "01", "02", "03", "04", "05", "06", "07", "08", "09", "10";
+
+        @each $image in $h_images {
+            &:nth-child(#{$image}) {
+                .history-img {
+                    background: url("../assets/images/camas/ilustracion-0#{$image}.png");
+
+                    @media (max-width: 768px) {
+                        background: url("../assets/images/camas/ilustracion-0#{$image}m.png");
+                        background-size: 100% auto !important;
+                        background-position: center top !important;
+                        background-repeat: no-repeat !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .histories-text {
+        font: normal normal bold 2.75rem/2.75rem Le Monde Journal Std;
+        margin-bottom: 30px;
+        text-align: center;
+        letter-spacing: -0.1.375rem;
+        color: #000000;
+        span {
+            color: var(--red-main);
+        }
+    }
+}
+
+footer {
+    font: normal normal bold 1.375rem/1.56rem Le Monde Journal Std;
+    background-color: #000;
+    color: #fff;
+
+    .credits-title {
+        text-align: left;
+        font: normal normal normal 1.75rem/2.125rem Export;
+        letter-spacing: 0px;
+        color: var(--red-main);
+        text-transform: uppercase;
+    }
+
+    .credits-subtitle {
+        font: normal normal bold 1rem/1.5rem Open Sans;
+        color: var(--red-main);
+        text-transform: uppercase;
+    }
+
+    .publish-date {
+        font: normal normal normal 1.75rem/2.125rem Export;
+    }
 }
